@@ -30,5 +30,5 @@ resolver.override_system_resolver('5.132.191.104')
 response = dnsresolver.query(args.DOMAIN, dnstypequery)
 
 for rdata in response:
-    print(rdata)
+    #print(rdata)
     pass
