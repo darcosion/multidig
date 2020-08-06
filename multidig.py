@@ -6,16 +6,16 @@ from dns import resolver as dnsresolver
 #import locaux
 import utils
 
-print("Multisig par darcosion (https://github.com/darcosion/multidig)")
+print("Multidig par darcosion (https://github.com/darcosion/multidig)")
 
-# paramètres de CLI
+# paramètres du CLI
 parser = argparse.ArgumentParser()
 parser.add_argument("-t", "--type", type=str,
                     help="type of DNS request (MX, A, CNAME, etc...)")
 parser.add_argument("DOMAIN", type=str,
                     help="domain to investigate")
 parser.add_argument('-frd', '--file-resolver-dns', type=str,
-                    help="File containing list of DNS resolver to test")
+                    help="file containing list of DNS resolver to test")
 
 args = parser.parse_args()
 #print(args)
