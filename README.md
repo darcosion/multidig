@@ -25,6 +25,17 @@ multidig.py: error: the following arguments are required: DOMAIN
 
 ### Exemple d'utilisation : 
 
+Pour récupérer une liste d'IP publiques : 
+```
+# python3 multidig.py  -t A amazon.com -frd publicdnslist/all.txt
+Multisig par darcosion (https://github.com/darcosion/multidig)
+Liste des éléments sortis par les resolvers :
+176.32.98.166
+176.32.103.205
+205.251.242.103
+```
+
+Pour récupérer une liste d'enregistrement TXT
 ```
 python3 multidig.py  -t TXT exxonmobil.com -frd publicdnslist/valid.txt
 Multisig par darcosion (https://github.com/darcosion/multidig)
