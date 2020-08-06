@@ -18,17 +18,30 @@ parser.add_argument('-frd', '--file-resolver-dns', type=str,
                     help="File containing list of DNS resolver to test")
 
 args = parser.parse_args()
-print(args)
+#print(args)
 
 dnstypequery= ''
 if(args.type):
     dnstypequery=args.type
+
+listresolver = ['8.8.8.8', '1.1.1.1']
 # on change de resolver dns : https://dnspython.readthedocs.io/en/stable/resolver-override.html?highlight=resolver
+if(args.file_resolver_dns):
+	f = open(args.file_resolver_dns)
+	listresolver = f.read().strip('\n')
+	f.close()
 
-resolver.override_system_resolver('5.132.191.104')
+sortie = set()
+for i in listresolver:
+	dnsresolver.override_system_resolver(i)
+	
+	response = dnsresolver.query(args.DOMAIN, dnstypequery)
+	
+	for rdata in response:
+		sortie.add(rdata)
+		#print(type(rdata))
+		#print(str(rdata))
+		pass
 
-response = dnsresolver.query(args.DOMAIN, dnstypequery)
-
-for rdata in response:
-    #print(rdata)
-    pass
+print("Liste des éléments sortis par les resolvers : ")
+print('\n'.join([str(elem) for elem in sortie]))
